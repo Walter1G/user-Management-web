@@ -1,0 +1,40 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "123 Main St, City, Country",
+      "phoneNumber": "123-456-7890",
+      "email": "john.doe@example.com",
+      "username": "johndoe123"
+    },
+    {
+      "firstName": "Billy",
+      "lastName": "John",
+      "address": "999 Main st",
+      "phoneNumber": "88888888",
+      "email": "company@gmail.com",
+      "username": "bill",
+      "id": "enULMiJ"
+    },
+    {
+      "firstName": "Junior",
+      "lastName": "Dred",
+      "address": "sskd ddsk s",
+      "phoneNumber": "1356565",
+      "email": "jrded.com",
+      "username": "jr",
+      "id": "atuNOEf"
+    },
+    {
+      "firstName": "navigate ",
+      "lastName": "test",
+      "address": "52 556 ",
+      "phoneNumber": "514565",
+      "email": "navtest@mail.com",
+      "username": "nvy",
+      "id": "SeJK6hY"
+    }
+  ]
+}

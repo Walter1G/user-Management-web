@@ -1,0 +1,70 @@
+.tablecontainer {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.title {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px;
+    margin: 10px;
+}
+
+.usertable {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+}
+
+.usertable th,
+.usertable td {
+    border: 1px solid #dddddd;
+
+    padding: 8px;
+}
+
+.usertable th {
+    background-color: #f2f2f2;
+}
+
+.usertable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.usertable tr:hover {
+    background-color: #e5e5e5;
+}
+
+.usertable td button {
+    margin-right: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+.usertable td button.deletebutton {
+    background-color: #ff6347;
+    /* Danger color (Crimson) */
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.usertable td button.deletebutton:hover {
+    background-color: #cc4738;
+    /* Darker red on hover */
+}
+
+.usertable td button.editbutton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    font-size: 1rem;
+}
+
+.usertable td button.editbutton:hover {
+    background-color: #0056b3;
+}

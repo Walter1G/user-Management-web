@@ -1,60 +1,79 @@
 import React, { useState } from 'react';
-import classes from './Form.module.css'
-
+import classes from './Form.module.css';
+import { Link, useNavigate } from 'react-router-dom';
+import AllUsers from '../pages/AllUsers';
 
 const Form = () => {
-    const [inputValue, setInputValue] = useState('');
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        address: '',
+        phoneNumber: '',
+        email: '',
+        username: '',
+    });
 
-    const handleChange = (e) => {
-        setInputValue(e.target.value);
+    const navigate = useNavigate();
+
+    const handleChange = (e, fieldName) => {
+        setFormData({
+            ...formData,
+            [fieldName]: e.target.value,
+        });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission here (e.g., send the input value to the server)
-        console.log('Form submitted with value:', inputValue);
-    };
 
+        fetch("http://localhost:8001/users", {
+            method: "POST",
+            headers: { "Content-Type": "application/json", },
+            body: JSON.stringify(formData)
+        }).then(res => console.log(res.json()))
+            .then(() => { navigate('/') });
+
+
+    };
 
     return (
         <div className={classes.formcontainer}>
             <h2>User</h2>
-            <form onSubmit={handleSubmit} >
+            <form onSubmit={handleSubmit}>
                 <div className={classes.formRow}>
-                    <div className={classes.row} >
+                    <div className={classes.row}>
                         <div>
-                            <label htmlFor='fname'>
-                                First Name:
-                            </label></div>
+                            <label htmlFor="fname">First Name:</label>
+                        </div>
                         <div>
                             <input
                                 type="text"
-                                name='fname'
-                                id='fname'
-                                value={inputValue}
-                                onChange={handleChange}
+                                name="fname"
+                                id="fname"
+                                value={formData.firstName}
+                                onChange={(e) => handleChange(e, 'firstName')}
                                 placeholder="First Name"
+                                required
                             />
                         </div>
                     </div>
 
                     <div className={classes.row}>
                         <div>
-                            <label htmlFor='lname'>
-                                Last Name:
-                            </label>
+                            <label htmlFor="lname">Last Name:</label>
                         </div>
                         <div>
                             <input
-                                id='lname'
+                                id="lname"
                                 type="text"
-                                value={inputValue}
-                                name='lname'
-                                onChange={handleChange}
+                                value={formData.lastName}
+                                name="lname"
+                                onChange={(e) => handleChange(e, 'lastName')}
                                 placeholder="Last Name"
+                                required
                             />
                         </div>
                     </div>
+
 
                 </div>
                 <div className={classes.formRow}>
@@ -68,9 +87,10 @@ const Form = () => {
                                 id='email'
                                 type="text"
                                 name='email'
-                                value={inputValue}
-                                onChange={handleChange}
+                                value={formData.email}
+                                onChange={(e) => handleChange(e, 'email')}
                                 placeholder="jondoe@mail.com"
+                                required
                             />
                         </div>
                     </div>
@@ -85,10 +105,11 @@ const Form = () => {
                             <input
                                 id='uname'
                                 type="text"
-                                value={inputValue}
+                                value={formData.username}
                                 name='uname'
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, 'username')}
                                 placeholder="@Username"
+                                required
                             />
                         </div>
                     </div>
@@ -106,9 +127,10 @@ const Form = () => {
                                 type="text"
                                 name='address'
                                 id='address'
-                                value={inputValue}
-                                onChange={handleChange}
+                                value={formData.address}
+                                onChange={(e) => handleChange(e, 'address')}
                                 placeholder="44 Park av "
+                                required
                             />
                         </div>
                     </div>
@@ -122,11 +144,12 @@ const Form = () => {
                         <div>
                             <input
                                 type="text"
-                                value={inputValue}
+                                value={formData.phoneNumber}
                                 name='phone'
                                 id='phone'
-                                onChange={handleChange}
+                                onChange={(e) => handleChange(e, 'phoneNumber')}
                                 placeholder="0712345678"
+                                required
                             />
                         </div>
                     </div>
@@ -134,13 +157,14 @@ const Form = () => {
                 </div>
 
 
+
                 <div className={classes.formRow}>
                     <button type="submit">SAVE</button>
-                    <button>Back to List</button>
+                    <Link to="/"><button>Back to List</button></Link>
                 </div>
             </form>
         </div>
     );
-}
+};
 
 export default Form;
