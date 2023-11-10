@@ -26,9 +26,24 @@ const AllUsers = () => {
         setEditUser(null);
     };
 
-    console.log(users)
+    const handleDelete = (userId) => {
+        // Send a DELETE request to the server
+        fetch(`http://127.0.0.1:8001/users/${userId}`, {
+            method: 'DELETE',
+        })
+            .then(response => {
+                if (response.ok) {
+                    console.log('User deleted successfully');
+                    // Update the local state by removing the deleted user
+                    setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
+                } else {
+                    console.error('Failed to delete user');
+                }
+            })
+            .catch(error => console.error('Error deleting user:', error));
+    };
 
-    users.map(user => console.log(user))
+
 
 
 
@@ -63,7 +78,7 @@ const AllUsers = () => {
                                     <Link to={`/edit/${user.id}`}>
                                         <button className={classes.editbutton}>Edit</button>
                                     </Link>
-                                    <button className={classes.deletebutton} onClick={() => console.log(user.id)}>Delete</button>
+                                    <button className={classes.deletebutton} onClick={() => handleDelete(user.id)}>Delete</button>
                                 </td>
                             </tr>
                         ))}

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import classes from './Form.module.css';
 import { Link } from 'react-router-dom';
 
-const EditUserForm = ({ user }) => {
+const EditUserForm = ({ userId }) => {
     const [formData, setFormData] = useState({
         firstName: user.firstName,
         lastName: user.lastName,

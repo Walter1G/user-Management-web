@@ -1,15 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useParams } from 'react-router-dom';
 import AllUsersPage from './pages/AllUsers';
 import AddUserPage from './pages/AddUser';
 import About from './pages/About';
 
 import './App.css';
 import MainNavigation from './components/layout/MainNavigation';
-import EditUserForm from './components/EditUserForm';
+// import EditUser from './components/EditUserForm';
+import EditUser from './pages/EditUser';
 
 
 function App() {
-
+  const params = useParams();
 
 
   return (
@@ -22,9 +23,9 @@ function App() {
         <Route path='/about' element={<About />} />
         {/* <Route path="/edit/:userId" element={<EditUserForm />} /> */}
 
-        <Route path="/edit/:userId" render={({ match }) => (
-          <EditUserForm userId={match.params.userId} />
-        )} />
+        <Route path="/edit/:userId" element={
+          <EditUser userId={params.userId} />
+        } />
       </Routes>
     </div>
 
