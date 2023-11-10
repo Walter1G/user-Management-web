@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import classes from './AllUsers.module.css'
 import UserForm from '../components/UserForm';
-import { Link, Route } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 
@@ -9,22 +9,19 @@ const AllUsers = () => {
 
     const [users, setUsers] = useState([]);
 
+
+
     useEffect(() => {
+
         fetch("http://127.0.0.1:8001/users")
             .then(response => response.json())
             .then(usersdata => setUsers(usersdata))
     }, [])
 
 
-    const [editUser, setEditUser] = useState(null);
 
-    const handleEdit = (user) => {
-        setEditUser(user);
-    };
 
-    const handleCancelEdit = () => {
-        setEditUser(null);
-    };
+
 
     const handleDelete = (userId) => {
         // Send a DELETE request to the server
@@ -33,7 +30,7 @@ const AllUsers = () => {
         })
             .then(response => {
                 if (response.ok) {
-                    console.log('User deleted successfully');
+                    alert('User deleted successfully');
                     // Update the local state by removing the deleted user
                     setUsers(prevUsers => prevUsers.filter(user => user.id !== userId));
                 } else {

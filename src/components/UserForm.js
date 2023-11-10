@@ -35,7 +35,8 @@ function UserForm({ userData }) {
         })
             .then(response => {
                 if (response.ok) {
-                    console.log('User updated successfully');
+                    alert('User updated successfully');
+
 
 
                 } else {
@@ -43,6 +44,8 @@ function UserForm({ userData }) {
                 }
             })
             .catch(error => console.error('Error updating user:', error));
+
+        navigate('/')
 
 
     };

@@ -30,7 +30,10 @@ const Form = () => {
             headers: { "Content-Type": "application/json", },
             body: JSON.stringify(formData)
         }).then(res => console.log(res.json()))
-            .then(() => { navigate('/') });
+            .then(() => {
+                alert("User added successfully");
+                navigate('/')
+            });
 
 
     };
